@@ -1,5 +1,6 @@
 #include "scene.h"
 #include "glad/include/glad/glad.h"
+#include "../Game/UnitCube.h"
 #include <iostream>
 
 	static void printMat(const glm::mat4 mat)
@@ -48,7 +49,7 @@
 	void Scene::AddShape(int type, int parent,unsigned int mode)
 	{
 		chainParents.push_back(parent);
-		shapes.push_back(new Shape(type,mode));
+		shapes.push_back(new UnitCube(type,mode));
 	}
 
 	void Scene::AddShapeCopy(int indx,int parent,unsigned int mode)

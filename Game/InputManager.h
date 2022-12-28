@@ -32,21 +32,50 @@
 				case GLFW_KEY_ESCAPE:			
 					glfwSetWindowShouldClose(window,GLFW_TRUE);
 				break;
-				case GLFW_KEY_SPACE:
-					if(scn->IsActive())
-						scn->Deactivate();
-					else
-						scn->Activate();
-				break;
+//				case GLFW_KEY_SPACE:
+//					if(scn->IsActive())
+//						scn->Deactivate();
+//					else
+//						scn->Activate();
+//				break;
 
 				case GLFW_KEY_UP:
-					scn->MoveCamera(0,scn->zTranslate,0.4f);
+                    scn->MyRotate(4, glm::vec3(1,0,0), 0);
 					break;
 				case GLFW_KEY_DOWN:
 					//scn->shapeTransformation(scn->xGlobalRotate,-5.f);
 					//cout<< "down: "<<endl;
-					scn->MoveCamera(0,scn->zTranslate,-0.4f);
+                    scn->MyRotate(-4, glm::vec3(1,0,0), 0);
 					break;
+                case GLFW_KEY_LEFT:
+                    scn->MyRotate(4, glm::vec3(0,1,0), 0);
+                    break;
+                case GLFW_KEY_RIGHT:
+                    //scn->shapeTransformation(scn->xGlobalRotate,-5.f);
+                    //cout<< "down: "<<endl;
+                    scn->MyRotate(-4, glm::vec3(0,1,0), 0);
+                    break;
+                case GLFW_KEY_R:
+                    scn->RotateRightWall();
+                    break;
+                case GLFW_KEY_L:
+                    scn->RotateLeftWall();
+                    break;
+                case GLFW_KEY_U:
+                    scn->RotateUpperWall();
+                    break;
+                case GLFW_KEY_D:
+                    scn->RotateDownWall();
+                    break;
+                case GLFW_KEY_F:
+                    scn->RotateFrontWall();
+                    break;
+                case GLFW_KEY_B:
+                    scn->RotateBackWall();
+                    break;
+                case GLFW_KEY_SPACE:
+                    scn->changeClockwise();
+                    break;
 
 			default:
 				break;

@@ -1,4 +1,5 @@
 #include "game.h"
+#include "MyCube.h"
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -23,18 +24,51 @@ Game::Game(float angle ,float relationWH, float near1, float far1) : Scene(angle
 
 void Game::Init()
 {		
-
+    //Shaders
 	AddShader("../res/shaders/pickingShader");	
 	AddShader("../res/shaders/basicShader");
-	
-	AddTexture("../res/textures/box0.bmp",false);
+	//
+	AddTexture("../res/textures/plane.png",false);
+	AddTexture("../res/textures/grass.bmp",false);
+	AddTexture("../res/textures/bricks.jpg",false);
 
-	AddShape(Plane,-1,TRIANGLES);
-	
+
+
+    //My Cube Init
+    int indx =0 ;
+    for(int i=-1; i<=1; i++)
+    {
+        for(int j=-1; j<=1; j++)
+        {
+            for(int k=-1; k<=1; k++)
+            {
+	            AddShape(Cube,-1,TRIANGLES);
+                if(indx==8)
+                {
+                    SetShapeTex(indx, 1);
+                }
+                else if(indx==0)
+                {
+                    SetShapeTex(indx, 2);
+                }
+                else
+                {
+                    SetShapeTex(indx, 0);
+                }
+
+                shapes[indx]->MyScale(glm::vec3(0.5,0.5,0.5));
+                shapes[indx]->MyTranslate(glm::vec3(i,j,k),0);
+                myCube.addCube(shapes[indx]);
+                myCube.updateUnitCube(indx, glm::vec3(i,j,k));
+                indx++;
+            }
+        }
+    }
+
 	pickedShape = 0;
-	
-	SetShapeTex(0,0);
+
 	MoveCamera(0,zTranslate,10);
+
 	pickedShape = -1;
 	
 	//ReadPixel(); //uncomment when you are reading from the z-buffer
@@ -69,9 +103,53 @@ void Game::Motion()
 {
 	if(isActive)
 	{
+        int indx =0 ;
+        for(int i=-1; i<=1; i++)
+        {
+            for(int j=-1; j<=1; j++)
+            {
+                for(int k=-1; k<=1; k++)
+                {
+                    shapes[indx]->MyRotate(0.05, glm::vec3(0,1,0),0);
+                    indx++;
+                }
+            }
+        }
+
 	}
 }
 
 Game::~Game(void)
 {
+}
+
+void Game::RotateRightWall() {
+    myCube.RotateRightWall();
+}
+
+void Game::RotateLeftWall() {
+    myCube.RotateLeftWall();
+}
+
+void Game::RotateUpperWall() {
+    myCube.RotateUpperWall();
+
+}
+
+void Game::RotateDownWall() {
+    myCube.RotateDownWall();
+}
+
+void Game::RotateFrontWall() {
+    myCube.RotateFrontWall();
+}
+
+void Game::RotateBackWall() {
+    myCube.RotateBackWall();
+
+}
+
+void Game::changeClockwise() {
+    myCube.flipClockwise();
+
 }
