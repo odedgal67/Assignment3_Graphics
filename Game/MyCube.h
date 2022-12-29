@@ -11,7 +11,8 @@ class MyCube {
     public:
         std::vector<UnitCube*> cubes;
         MyCube();
-        int clockwise;
+        float clockwise;
+        float angle;
 
     void addCube(Shape *&pShape);
 
@@ -30,6 +31,12 @@ class MyCube {
     void RotateBackWall();
 
     void flipClockwise();
+
+    void Randomizer();
+
+    void DivideAngle();
+
+    void MultiplyAngle();
 };
 
 

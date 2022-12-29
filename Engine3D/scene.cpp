@@ -193,16 +193,15 @@
 		if(pickedShape == -1)
 		{
 			if(button == 1 )
-			{				
-
-				MyTranslate(glm::vec3(-xrel/20.0f,0,0),0);
-				MyTranslate(glm::vec3(0,yrel/20.0f,0),0);
+			{
+				MyTranslate(glm::vec3(-xrel/50.0f,0,0),0);
+				MyTranslate(glm::vec3(0,yrel/50.0f,0),0);
 				WhenTranslate();
 			}
 			else
 			{
-				MyRotate(xrel/2.0f,glm::vec3(1,0,0),0);
-				MyRotate(yrel/2.0f,glm::vec3(0,0,1),0);
+				MyRotate(-xrel/2.0f,glm::vec3(0,1,0),0);
+				MyRotate(-yrel/2.0f,glm::vec3(1,0,0),0);
 				WhenRotate();
 			}
 		}

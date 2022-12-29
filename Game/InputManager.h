@@ -3,7 +3,8 @@
 #include "game.h"
 
 
-	void mouse_callback(GLFWwindow* window,int button, int action, int mods)
+
+    void mouse_callback(GLFWwindow* window,int button, int action, int mods)
 	{	
 		if(action == GLFW_PRESS )
 		{
@@ -17,8 +18,7 @@
 	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	{
 		Game *scn = (Game*)glfwGetWindowUserPointer(window);
-		scn->MyTranslate(glm::vec3(0,0,xoffset),0);
-		
+        scn->MoveCamera(0,2,(-4)*yoffset);
 	}
 	
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -75,6 +75,18 @@
                     break;
                 case GLFW_KEY_SPACE:
                     scn->changeClockwise();
+                    break;
+                case GLFW_KEY_N:
+                    scn->Randomizer();
+                    break;
+                case GLFW_KEY_0:
+                    scn->ZeroTrans();
+                    break;
+                case GLFW_KEY_Z:
+                    scn->DivideAngle();
+                    break;
+                case GLFW_KEY_A:
+                    scn->MultiplyAngle();
                     break;
 
 			default:

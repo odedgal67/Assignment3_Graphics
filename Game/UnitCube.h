@@ -7,9 +7,9 @@
 class UnitCube : public Shape
 {
 public:
-    int x;
-    int y;
-    int z;
+    float x;
+    float y;
+    float z;
 
     void updateCube(glm::vec3 pos);
     UnitCube(int type, int mode);

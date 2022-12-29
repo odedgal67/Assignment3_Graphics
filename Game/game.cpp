@@ -43,18 +43,18 @@ void Game::Init()
             for(int k=-1; k<=1; k++)
             {
 	            AddShape(Cube,-1,TRIANGLES);
-                if(indx==8)
-                {
-                    SetShapeTex(indx, 1);
-                }
-                else if(indx==0)
-                {
-                    SetShapeTex(indx, 2);
-                }
-                else
-                {
-                    SetShapeTex(indx, 0);
-                }
+//                if(indx==26)
+//                {
+//                    SetShapeTex(indx, 1);
+//                }
+//                else if(indx==0)
+//                {
+//                    SetShapeTex(indx, 2);
+//                }
+//                else
+//                {
+                   SetShapeTex(indx, 0);
+//                }
 
                 shapes[indx]->MyScale(glm::vec3(0.5,0.5,0.5));
                 shapes[indx]->MyTranslate(glm::vec3(i,j,k),0);
@@ -133,7 +133,6 @@ void Game::RotateLeftWall() {
 
 void Game::RotateUpperWall() {
     myCube.RotateUpperWall();
-
 }
 
 void Game::RotateDownWall() {
@@ -146,10 +145,20 @@ void Game::RotateFrontWall() {
 
 void Game::RotateBackWall() {
     myCube.RotateBackWall();
-
 }
 
 void Game::changeClockwise() {
     myCube.flipClockwise();
+}
 
+void Game::Randomizer() {
+    myCube.Randomizer();
+}
+
+void Game::DivideAngle() {
+    myCube.DivideAngle();
+}
+
+void Game::MultiplyAngle() {
+    myCube.MultiplyAngle();
 }

@@ -30,5 +30,11 @@ public:
     void RotateBackWall();
 
     void changeClockwise();
+
+    void Randomizer();
+
+    void DivideAngle();
+
+    void MultiplyAngle();
 };
 
