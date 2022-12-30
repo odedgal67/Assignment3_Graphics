@@ -20,15 +20,15 @@ void MyCube::RotateRightWall() {
     {
         if (cube->x <= 1.008 && cube->x >= 0.992)  // 1 is the x-coordinate of the right wall
         {
-            float delta_degree = angle*clockwise;
-            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), delta_degree, glm::vec3(1.0f,0.0f,0.0f));
+            float deltaAngle = angle*clockwise;
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), deltaAngle, glm::vec3(1.0f,0.0f,0.0f));
             glm::vec3 newPos = glm::vec3(rotationMatrix * glm::vec4(cube->x, cube->y, cube->z, 1.0f));
             glm::vec3 originalCubePos = glm::vec3(cube->x, cube->y, cube->z);
             newPos.x = 1.0f;
 
             glm::vec3 translationVector = newPos-originalCubePos;
             cube->MyTranslate(translationVector,0);
-            cube->MyRotate(delta_degree, glm::vec3(1.0f,0.0f,0.0f), 0);
+            cube->MyRotate(deltaAngle, glm::vec3(1.0f,0.0f,0.0f), 0);
             cube->updateCube(newPos);
         }
     }
@@ -39,15 +39,15 @@ void MyCube::RotateLeftWall() {
     {
         if (cube->x >= -1.008 && cube->x <= -0.992)  // 1 is the x-coordinate of the right wall
         {
-            float delta_degree = angle*clockwise;
-            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), delta_degree, glm::vec3(1.0f,0.0f,0.0f));
+            float deltaAngle = angle*clockwise;
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), deltaAngle, glm::vec3(1.0f,0.0f,0.0f));
             glm::vec3 newPos = glm::vec3(rotationMatrix * glm::vec4(cube->x, cube->y, cube->z, 1.0f));
             glm::vec3 originalCubePos = glm::vec3(cube->x, cube->y, cube->z);
             newPos.x = -1.0f;
 
             glm::vec3 translationVector = newPos-originalCubePos;
             cube->MyTranslate(translationVector,0);
-            cube->MyRotate(delta_degree, glm::vec3(1.0f,0.0f,0.0f), 0);
+            cube->MyRotate(deltaAngle, glm::vec3(1.0f,0.0f,0.0f), 0);
             cube->updateCube(newPos);
         }
     }
@@ -63,15 +63,15 @@ void MyCube::RotateUpperWall() {
     {
         if (cube->y <= 1.008 && cube->y >= 0.992)  // 1 is the x-coordinate of the right wall
         {
-            float delta_degree = angle*clockwise;
-            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), delta_degree, glm::vec3(0.0f,1.0f,0.0f));
+            float deltaAngle = angle*clockwise;
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), deltaAngle, glm::vec3(0.0f,1.0f,0.0f));
             glm::vec3 newPos = glm::vec3(rotationMatrix * glm::vec4(cube->x, cube->y, cube->z, 1.0f));
             glm::vec3 originalCubePos = glm::vec3(cube->x, cube->y, cube->z);
             newPos.y = 1.0f;
 
             glm::vec3 translationVector = newPos-originalCubePos;
             cube->MyTranslate(translationVector,0);
-            cube->MyRotate(delta_degree, glm::vec3(0.0f,1.0f,0.0f), 0);
+            cube->MyRotate(deltaAngle, glm::vec3(0.0f,1.0f,0.0f), 0);
             cube->updateCube(newPos);
         }
     }
@@ -82,14 +82,14 @@ void MyCube::RotateDownWall() {
     {
         if (cube->y >= -1.008 && cube->y <= -0.992)  // 1 is the x-coordinate of the right wall
         {
-            float delta_degree = angle*clockwise;
-            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), delta_degree, glm::vec3(0.0f,1.0f,0.0f));
+            float deltaAngle = angle*clockwise;
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), deltaAngle, glm::vec3(0.0f,1.0f,0.0f));
             glm::vec3 newPos = glm::vec3(rotationMatrix * glm::vec4(cube->x, cube->y, cube->z, 1.0f));
             glm::vec3 originalCubePos = glm::vec3(cube->x, cube->y, cube->z);
             newPos.y = -1.0f;
             glm::vec3 translationVector = newPos-originalCubePos;
             cube->MyTranslate(translationVector,0);
-            cube->MyRotate(delta_degree, glm::vec3(0.0f,1.0f,0.0f), 0);
+            cube->MyRotate(deltaAngle, glm::vec3(0.0f,1.0f,0.0f), 0);
             cube->updateCube(newPos);
         }
     }
@@ -100,14 +100,14 @@ void MyCube::RotateFrontWall() {
     {
         if (cube->z <= 1.008 && cube->z >= 0.992)  // 1 is the x-coordinate of the right wall
         {
-            float delta_degree = angle*clockwise;
-            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), delta_degree, glm::vec3(0.0f,0.0f,1.0f));
+            float deltaAngle = angle*clockwise;
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), deltaAngle, glm::vec3(0.0f,0.0f,1.0f));
             glm::vec3 newPos = glm::vec3(rotationMatrix * glm::vec4(cube->x, cube->y, cube->z, 1.0f));
             glm::vec3 originalCubePos = glm::vec3(cube->x, cube->y, cube->z);
             newPos.z = 1.0f;
             glm::vec3 translationVector = newPos-originalCubePos;
             cube->MyTranslate(translationVector,0);
-            cube->MyRotate(delta_degree, glm::vec3(0.0f,0.0f,1.0f), 0);
+            cube->MyRotate(deltaAngle, glm::vec3(0.0f,0.0f,1.0f), 0);
             cube->updateCube(newPos);
         }
     }
@@ -118,15 +118,15 @@ void MyCube::RotateBackWall() {
     {
         if (cube->z >= -1.008 && cube->z <= -0.992)  // 1 is the x-coordinate of the right wall
         {
-            float delta_degree = angle*clockwise;
-            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), delta_degree, glm::vec3(0.0f,0.0f,1.0f));
+            float deltaAngle = angle*clockwise;
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), deltaAngle, glm::vec3(0.0f,0.0f,1.0f));
             glm::vec3 newPos = glm::vec3(rotationMatrix * glm::vec4(cube->x, cube->y, cube->z, 1.0f));
             glm::vec3 originalCubePos = glm::vec3(cube->x, cube->y, cube->z);
             newPos.z = -1.0f;
 
             glm::vec3 translationVector = newPos-originalCubePos;
             cube->MyTranslate(translationVector,0);
-            cube->MyRotate(delta_degree, glm::vec3(0.0f,0.0f,1.0f), 0);
+            cube->MyRotate(deltaAngle, glm::vec3(0.0f,0.0f,1.0f), 0);
             cube->updateCube(newPos);
         }
     }
