@@ -2,10 +2,10 @@
 #ifndef GAME_MYCUBE_H
 #define GAME_MYCUBE_H
 
-
 #include <vector>
 #include "UnitCube.h"
 #include "shape.h"
+
 
 class MyCube {
     public:
@@ -16,21 +16,21 @@ class MyCube {
 
     void addCube(Shape *&pShape);
 
-    void RotateRightWall();
+    void RotateRightWall(float angle);
 
     void updateUnitCube(int i, glm::vec3 pos);
 
-    void RotateLeftWall();
+    void RotateLeftWall(float angle);
 
-    void RotateUpperWall();
+    void RotateUpperWall(float angle);
 
-    void RotateDownWall();
+    void RotateDownWall(float angle);
 
-    void RotateFrontWall();
+    void RotateFrontWall(float angle);
 
-    void RotateBackWall();
+    void RotateBackWall(float angle);
 
-    void flipClockwise();
+    void FlipClockwise();
 
     void Randomizer();
 

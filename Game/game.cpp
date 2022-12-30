@@ -22,19 +22,19 @@ Game::Game(float angle ,float relationWH, float near1, float far1) : Scene(angle
 { 	
 }
 
-void Game::Init()
-{		
+void Game::Init(Display* display)
+{
+    this->display = display;
     //Shaders
 	AddShader("../res/shaders/pickingShader");	
 	AddShader("../res/shaders/basicShader");
-	//
+
+	//Textures
 	AddTexture("../res/textures/plane.png",false);
 	AddTexture("../res/textures/grass.bmp",false);
 	AddTexture("../res/textures/bricks.jpg",false);
 
-
-
-    //My Cube Init
+    //MyCube Construction and Init
     int indx =0 ;
     for(int i=-1; i<=1; i++)
     {
@@ -42,7 +42,7 @@ void Game::Init()
         {
             for(int k=-1; k<=1; k++)
             {
-	            AddShape(Cube,-1,TRIANGLES);
+	            AddShape(Cube,-1,TRIANGLES); //Add Cube to scene
 //                if(indx==26)
 //                {
 //                    SetShapeTex(indx, 1);
@@ -56,10 +56,10 @@ void Game::Init()
                    SetShapeTex(indx, 0);
 //                }
 
-                shapes[indx]->MyScale(glm::vec3(0.5,0.5,0.5));
-                shapes[indx]->MyTranslate(glm::vec3(i,j,k),0);
+                shapes[indx]->MyScale(glm::vec3(0.5,0.5,0.5)); // Scale by 0.5
+                shapes[indx]->MyTranslate(glm::vec3(i,j,k),0); //Move to initial position
                 myCube.addCube(shapes[indx]);
-                myCube.updateUnitCube(indx, glm::vec3(i,j,k));
+                myCube.updateUnitCube(indx, glm::vec3(i,j,k)); //Set Position
                 indx++;
             }
         }
@@ -103,18 +103,6 @@ void Game::Motion()
 {
 	if(isActive)
 	{
-        int indx =0 ;
-        for(int i=-1; i<=1; i++)
-        {
-            for(int j=-1; j<=1; j++)
-            {
-                for(int k=-1; k<=1; k++)
-                {
-                    shapes[indx]->MyRotate(0.05, glm::vec3(0,1,0),0);
-                    indx++;
-                }
-            }
-        }
 
 	}
 }
@@ -124,31 +112,91 @@ Game::~Game(void)
 }
 
 void Game::RotateRightWall() {
-    myCube.RotateRightWall();
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateRightWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
 
 void Game::RotateLeftWall() {
-    myCube.RotateLeftWall();
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateLeftWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
 
 void Game::RotateUpperWall() {
-    myCube.RotateUpperWall();
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateUpperWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
 
 void Game::RotateDownWall() {
-    myCube.RotateDownWall();
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateDownWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
 
 void Game::RotateFrontWall() {
-    myCube.RotateFrontWall();
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateFrontWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
 
 void Game::RotateBackWall() {
-    myCube.RotateBackWall();
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateBackWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
 
 void Game::changeClockwise() {
-    myCube.flipClockwise();
+    myCube.FlipClockwise();
 }
 
 void Game::Randomizer() {
@@ -162,3 +210,4 @@ void Game::DivideAngle() {
 void Game::MultiplyAngle() {
     myCube.MultiplyAngle();
 }
+

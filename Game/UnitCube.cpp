@@ -10,3 +10,4 @@ void UnitCube::updateCube(glm::vec3 pos) {
     this->y = pos.y;
     this->z = pos.z;
 }
+

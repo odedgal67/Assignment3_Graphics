@@ -1,6 +1,7 @@
-#pragma once
+
 #include "scene.h"
 #include "MyCube.h"
+#include "display.h"
 
 class Game : public Scene
 {
@@ -8,7 +9,7 @@ public:
 	
 	Game();
 	Game(float angle,float relationWH,float near, float far);
-	void Init();
+	void Init(Display* display);
 	void Update(const glm::mat4 &MVP,const glm::mat4 &Model,const int  shaderIndx);
 	void ControlPointUpdate();
 	void WhenRotate();
@@ -36,5 +37,7 @@ public:
     void DivideAngle();
 
     void MultiplyAngle();
+
+    Display *display;
 };
 

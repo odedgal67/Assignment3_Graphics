@@ -32,12 +32,6 @@
 				case GLFW_KEY_ESCAPE:			
 					glfwSetWindowShouldClose(window,GLFW_TRUE);
 				break;
-//				case GLFW_KEY_SPACE:
-//					if(scn->IsActive())
-//						scn->Deactivate();
-//					else
-//						scn->Activate();
-//				break;
 
 				case GLFW_KEY_UP:
                     scn->MyRotate(4, glm::vec3(1,0,0), 0);
